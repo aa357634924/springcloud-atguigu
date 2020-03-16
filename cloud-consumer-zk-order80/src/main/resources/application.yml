@@ -1,0 +1,8 @@
+server:
+  port: 80 #服务端口  80是默认访问端口，用户在访问时可以不写80
+  servlet:
+    context-path: /order
+
+spring:
+  application:
+    name: cloud-consumer-zk-order #服务名

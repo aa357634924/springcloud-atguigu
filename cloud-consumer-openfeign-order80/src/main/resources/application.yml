@@ -1,0 +1,29 @@
+server:
+  port: 80 #服务端口  80是默认访问端口，用户在访问时可以不写80
+  servlet:
+    context-path: /order
+
+spring:
+  application:
+    name: cloud-consumer-openfeign-order #服务名
+
+eureka:
+  client:
+    # 是否向注册中心注册自己
+    register-with-eureka: false
+    # 是否从EurekaServer抓取已有的注册信息，默认为true；单节点无所谓，集群必须设置true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      # 与 eureka server 交互的地址查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+
+ribbon:
+  # 读取资源超时时间
+  ReadTimeout: 5000
+  # 建立连接超时时间
+  ConnectTimeout: 5000
+
+# openfeign 日志以什么级别监控哪个接口
+logging:
+  level:
+    com.rj.springcloud.service.PaymentFeignService: debug
